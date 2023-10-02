@@ -1,3 +1,3 @@
-export interface IServise {
+export interface IService {
     init(): Promise<boolean>;
 }
