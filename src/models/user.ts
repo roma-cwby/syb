@@ -1,15 +1,6 @@
+import { IUser } from 'types/user';
 import { Schema, model } from 'mongoose';
 import { IsEmail, Length, IsInt, Min, Max, length, IsOptional } from 'class-validator';
-
-interface IUser {
-  name: string;
-  email: string;
-  password: string;
-  avatar: string;
-  subscription: string;
-  token: string;
-  verificationToken: string;
-}
 
 const userSchema = new Schema<IUser>(
   {
