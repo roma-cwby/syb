@@ -1,3 +1,5 @@
+import { Request } from 'express';
+
 export interface iUser {
   name: string;
   email: string;
@@ -8,4 +10,8 @@ export interface iUser {
 
 export interface IError extends Error {
   status?: number;
+}
+
+export interface IRequest extends Request {
+  user?: any;
 }
