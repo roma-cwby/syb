@@ -70,8 +70,38 @@ const logout = async (req: IRequest, res: Response) => {
   res.status(201).json({});
 };
 
+const current = async (req: IRequest, res: Response) => {
+  res.status(200).json({
+    id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+    avatar: req.user.avatar,
+  });
+};
+
+const update = async (req: IRequest, res: Response) => {
+  const response = await User.findByIdAndUpdate(
+    req.params.id,
+    { ...req.body },
+    { new: true, select: 'name email avatar' }
+  );
+
+  res.status(200).json(response);
+};
+
+const changePassword = async (req: IRequest, res: Response) => {
+  const hashPass = await bcrypt.hash(req.body.password, 10);
+
+  await User.findByIdAndUpdate(req.params.id, { ...req.body, password: hashPass });
+
+  res.status(200).json({ message: 'New password save' });
+};
+
 export const ctrl = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
   logout: ctrlWrapper(logout),
+  current: ctrlWrapper(current),
+  update: ctrlWrapper(update),
+  changePassword: ctrlWrapper(changePassword),
 };
