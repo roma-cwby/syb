@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { User } from '../models/user';
 import { httpError } from 'helpers/httpError';
 import { ctrlWrapper } from 'helpers/ctrlWrapper';

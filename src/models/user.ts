@@ -28,6 +28,10 @@ export const UserSchema = new Schema(
       type: String,
       require: true,
     },
+    subscribe: {
+      type: Boolean,
+      default: false,
+    },
   },
   { versionKey: false, timestamps: true }
 );
