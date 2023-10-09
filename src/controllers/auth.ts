@@ -97,6 +97,10 @@ const changePassword = async (req: IRequest, res: Response) => {
   res.status(200).json({ message: 'New password save' });
 };
 
+const changeAvatar = async (req: IRequest, res: Response) => {
+  console.log(req.body);
+};
+
 export const ctrl = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
@@ -104,4 +108,5 @@ export const ctrl = {
   current: ctrlWrapper(current),
   update: ctrlWrapper(update),
   changePassword: ctrlWrapper(changePassword),
+  changeAvatar: ctrlWrapper(changeAvatar),
 };

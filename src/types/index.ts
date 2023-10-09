@@ -14,4 +14,5 @@ export interface IError extends Error {
 
 export interface IRequest extends Request {
   user?: any;
+  file?: any;
 }

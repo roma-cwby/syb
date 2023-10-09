@@ -4,6 +4,7 @@ import { validateBody } from 'helpers/validateSchemas';
 import { registerSchema, loginSchema, updateSchema, changePasswordSchema } from 'models/user';
 import { authenticate } from 'middlewares/authenticate';
 import { isValidId } from 'middlewares/isValidId';
+import { avatarImage } from 'middlewares/uploadImage';
 
 export const userRouter = express.Router();
 
@@ -23,4 +24,12 @@ userRouter.patch(
   authenticate,
   validateBody(changePasswordSchema),
   ctrl.changePassword
+);
+
+userRouter.patch(
+  '/:id/avatar',
+  isValidId,
+  authenticate,
+  avatarImage.single('avatar'),
+  ctrl.changeAvatar
 );
